@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_display_sqlite_data"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+   android:background="@drawable/gradientback"
+    tools:context=".ProfileActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/lin1"
+        android:background="@drawable/gradient2"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:onClick="goToMain"
+            android:background="@drawable/home"/>
+
+    </LinearLayout>
+<RelativeLayout
+    android:id="@+id/rel1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+
+        <ImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="175dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_height="175dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/pro"/>
+
+        <TextView
+            android:id="@+id/profilename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Avi Mallick"
+            android:textSize="35sp"
+            android:textStyle="bold|italic"
+            android:fontFamily="sans-serif"
+            android:textColor="@android:color/black"
+            tools:ignore="MissingPrefix" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Employee ID :  5"
+            android:gravity="center"
+            android:id="@+id/profileid"
+            android:layout_marginBottom="15dp"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:fontFamily="sans-serif"
+            android:textColor="@android:color/black"
+            tools:ignore="MissingPrefix" />
+    </LinearLayout>
+
+</RelativeLayout>
+
+
+    <View
+        android:id="@+id/line3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/rel1"
+        android:background="#A9A9A9" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line3"
+        android:layout_centerHorizontal="true"
+
+        android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/profileage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="24"
+            android:textColor="@color/color2"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AGE"
+            android:paddingTop="7dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="MissingPrefix" />
+
+    </LinearLayout>
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#A9A9A9" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+        android:id="@+id/profilegender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Male"
+            android:textStyle="bold"
+        android:textColor="@color/color2"
+        android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GENDER"
+            android:textSize="18sp"
+            android:paddingTop="7dp"
+            android:textStyle="bold"
+            tools:ignore="MissingPrefix" />
+    </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:layout_below="@+id/linearLayout"
+        android:background="#A9A9A9" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:paddingTop="40dp"
+        android:paddingBottom="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_weight="1"
+        android:paddingRight="5dp"
+        android:paddingLeft="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/editbtn"
+            android:text="Edit"
+            android:textSize="15sp"
+            android:onClick="updateData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_shape"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="5dp"
+        android:paddingRight="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/delbtn"
+            android:text="Delete"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="deleteData"
+            android:background="@drawable/button_shape"/>
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
