@@ -8,7 +8,7 @@ This is an android app built for TigerIT Interview screening. The app is an empl
 5. Export the existing data as a .csv file.( It will show where the file is stored)
 6. Import a .csv file ( format should be id,name,age,gender,image  though new id will be auto generated) 
 
-# A sample .csv file has been provided named as employee.csv
-# Some screenshot of the app is also provided
-# Image is stored as a base64 encoded string in .csv file.
+$$  A sample .csv file has been provided named as employee.csv
+$$  Some screenshot of the app is also provided
+$$  Image is stored as a base64 encoded string in .csv file.
 
