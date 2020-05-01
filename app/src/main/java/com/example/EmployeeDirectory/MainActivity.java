@@ -63,9 +63,15 @@ public class MainActivity extends AppCompatActivity {
     }
      /////////////////////////      exports the databse into a csv file  and shows the file name and path ///////////////////
     public void  exportCSV(View v) throws IOException {
-        CsvHelper CSV = new CsvHelper(this);
-        String msg = CSV.WriteCSV();
-        Toast.makeText(MainActivity.this,msg,Toast.LENGTH_LONG).show();
+
+        if (checkPermissionWrite_EXTERNAL_STORAGE(this)) {
+            CsvHelper CSV = new CsvHelper(this);
+            String msg = CSV.WriteCSV();
+            Toast.makeText(MainActivity.this,msg,Toast.LENGTH_LONG).show();
+        }
+        else
+        Toast.makeText(MainActivity.this,"not allowed",Toast.LENGTH_LONG).show();
+
 
     }
     /////////////////   select a .csv file and imports data from it to the database
@@ -109,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
+    public static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 100;
 
     public boolean checkPermissionREAD_EXTERNAL_STORAGE(
             final Context context) {
@@ -128,6 +135,34 @@ public class MainActivity extends AppCompatActivity {
                                     (Activity) context,
                                     new String[] { Manifest.permission.READ_EXTERNAL_STORAGE },
                                     MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                }
+                return false;
+            } else {
+                return true;
+            }
+
+        } else {
+            return true;
+        }
+    }
+    public boolean checkPermissionWrite_EXTERNAL_STORAGE(
+            final Context context) {
+        int currentAPIVersion = Build.VERSION.SDK_INT;
+        if (currentAPIVersion >= android.os.Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(context,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(
+                        (Activity) context,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                    showDialog2("External storage", context,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+                } else {
+                    ActivityCompat
+                            .requestPermissions(
+                                    (Activity) context,
+                                    new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
+                                    MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
                 }
                 return false;
             } else {
@@ -158,23 +193,46 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alert = alertBuilder.create();
         alert.show();
     }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // do your stuff
-                } else {
-                    Toast.makeText(MainActivity.this, "GET_ACCOUNTS Denied",
-                            Toast.LENGTH_SHORT).show();
-                }
-                break;
-            default:
-                super.onRequestPermissionsResult(requestCode, permissions,
-                        grantResults);
-        }
+    public void showDialog2(final String msg, final Context context,
+                           final String permission) {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
+        alertBuilder.setCancelable(true);
+        alertBuilder.setTitle("Permission necessary 2");
+        alertBuilder.setMessage(msg + " permission is necessary");
+        alertBuilder.setPositiveButton(android.R.string.yes,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        ActivityCompat.requestPermissions((Activity) context,
+                                new String[] { permission },
+                                MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+                    }
+                });
+        AlertDialog alert = alertBuilder.create();
+        alert.show();
     }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode,
+//                                           String[] permissions, int[] grantResults) {
+//        switch (requestCode) {
+//            case MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
+//                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    // do your stuff
+//                } else {
+//                    Toast.makeText(MainActivity.this, "GET_ACCOUNTS Denied",
+//                            Toast.LENGTH_SHORT).show();
+//                }
+//            case MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE:
+//                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    // do your stuff
+//                } else {
+//                    Toast.makeText(MainActivity.this, "GET_ACCOUNTS Denied",
+//                            Toast.LENGTH_SHORT).show();
+//                }
+//                break;
+//            default:
+//                super.onRequestPermissionsResult(requestCode, permissions,
+//                        grantResults);
+//        }
+//    }
 
 }

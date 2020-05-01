@@ -5,12 +5,19 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Environment;
 import android.util.Base64;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
